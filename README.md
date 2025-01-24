@@ -10,6 +10,16 @@ For the encoder part, the pretrained CNN extracts the feature vector from a give
 In the test phase, the encoder part is almost same as the training phase. The only difference is that batchnorm layer uses moving average and variance instead of mini-batch statistics. This can be easily implemented using [encoder.eval()](https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/image_captioning/sample.py#L37). For the decoder part, there is a significant difference between the training phase and the test phase. In the test phase, the LSTM decoder can't see the image description. To deal with this problem, the LSTM decoder feeds back the previosly generated word to the next input. This can be implemented using a [for-loop](https://github.com/yunjey/pytorch-tutorial/blob/master/tutorials/03-advanced/image_captioning/model.py#L48).
 
 
+# Audio Caption Generation
+In addition to generating textual descriptions, this project supports converting image captions into audio output using text-to-speech (TTS) technology. Once the image caption is generated, the system can synthesize the caption into spoken audio.
+
+The TTS system uses a pretrained model to convert captions into natural-sounding speech. This feature is particularly useful for accessibility applications, enabling visually impaired users to understand image content through audio descriptions.
+
+#### Implementation
+The image captioning module generates the text description.
+The TTS system, based on the gTTS (Google Text-to-Speech) library or other advanced speech synthesis models, processes the text and outputs an audio file (e.g., .mp3).
+
+
 <br>
 
 ## Pretrained model
